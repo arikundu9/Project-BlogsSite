@@ -17,9 +17,9 @@ module.exports = {
         allowNull: false,
       },
       authorId: {
-        type: Sequelize.BIGINT,
+        type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'authorModel', key: 'id' }
+        references: { model: 'authorModels', key: 'id' }
       },
       tags: {
         type: Sequelize.STRING,

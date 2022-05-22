@@ -28,7 +28,7 @@ module.exports = {
       },
       password: {
         allowNull: false,
-        type: DataTypes.STRING(64),
+        type: Sequelize.STRING(64),
         /* validate: {
           is: /^[0-9a-f]{64}$/i
         } */
