@@ -1,7 +1,7 @@
 const AuthorModel = require("../models/authorModel")
 const jwt = require("jsonwebtoken")
 const validator = require('./validator')
-const authorModel = require("../models/authorModel.js")
+const authorModel = require("../models/authorModel.js");
 const blogModel = require("../models/blogModel")
 
 
