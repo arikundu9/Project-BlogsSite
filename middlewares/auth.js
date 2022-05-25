@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
-const blogModel = require("../models/blogModel")
+// const blogModel = require("../models/blogModel")
+const { sequelize, authorModel, blogModel } = require('../models');
+
 
 const authenticate = function (req, res, next) {
     const token = req.headers["x-api-key"];

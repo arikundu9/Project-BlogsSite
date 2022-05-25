@@ -1,8 +1,11 @@
-const AuthorModel = require("../models/authorModel")
+// const authorModel = require("../models/authorModel")
 const jwt = require("jsonwebtoken")
 const validator = require('./validator')
-const authorModel = require("../models/authorModel.js");
-const blogModel = require("../models/blogModel")
+// const authorModel = require("../models/authorModel.js");
+// const blogModel = require("../models/blogModel")
+
+const { sequelize, authorModel } = require('../models'); // import models
+
 
 
 const createAuthor = async function (req, res) {
@@ -54,12 +57,12 @@ const createAuthor = async function (req, res) {
             return res.status(400).send({ status: false, message: 'valid password is required' })
         }
 
-        const isDuplicateEmail = await authorModel.findOne({ email })
-        if (isDuplicateEmail) {
+        const isDuplicateEmail = await authorModel.findOne({ where: { email: email } })
+        if (isDuplicateEmail!==null) {
             return res.status(400).send({ status: false, message: 'email already exist' })
         }
 
-        const authorCreated = await AuthorModel.create(requestBody)
+        const authorCreated = await authorModel.create(requestBody)
         res.status(201).send({ status: true, message: 'Author created successfully', data: authorCreated })
     }
     catch (error) {
@@ -95,7 +98,7 @@ const loginauthor = async function (req, res) {
             return res.status(400).send({ status: false, message: 'valid password is required' })
         }
 
-        const author = await AuthorModel.findOne({ email, password })
+        const author = await authorModel.findOne({ email, password })
         if (!author) {
             return res.status(404).send({ status: false, mssg: "username or password is not valid" })
         }

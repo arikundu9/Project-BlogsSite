@@ -1,7 +1,7 @@
-const authorModel = require("../models/authorModel")
-const blogModel = require("../models/blogModel")
+// const authorModel = require("../models/authorModel")
+// const blogModel = require("../models/blogModel")
 const validator = require('./validator')
-
+const { sequelize, authorModel, blogModel } = require('../models');
 
 const createblog = async function (req, res) {
     try {
